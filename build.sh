@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# set -e
+set -e
 
 
 echo "Building OSX"
@@ -13,9 +13,9 @@ mv products/osx.a osx/RiffleTest/osx.a
 
 # echo "Building iOS"
 # gomobile bind -target=ios github.com/exis-io/riffle
-
 # rm -rf ios/Riffle.framework
 # mv Riffle.framework ios/Riffle.framework
+
 
 # iOS naively like above. Doesn't work. 
 # GOARM=7 CGO_ENABLED=1 GOARCH=arm go build -buildmode=c-archive -o products/ios.a riffle/runner/osx.go

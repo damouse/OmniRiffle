@@ -12,7 +12,7 @@
 		50533C381C02C49400E046D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50533C361C02C49400E046D0 /* Main.storyboard */; };
 		50533C3A1C02C49400E046D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50533C391C02C49400E046D0 /* Assets.xcassets */; };
 		50533C3D1C02C49400E046D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50533C3B1C02C49400E046D0 /* LaunchScreen.storyboard */; };
-		50533C451C02C4AB00E046D0 /* Riffle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50533C441C02C4AB00E046D0 /* Riffle.framework */; };
+		50533C481C02E28300E046D0 /* Riffle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50533C471C02E28300E046D0 /* Riffle.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,8 +23,8 @@
 		50533C391C02C49400E046D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50533C3C1C02C49400E046D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		50533C3E1C02C49400E046D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		50533C441C02C4AB00E046D0 /* Riffle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Riffle.framework; sourceTree = "<group>"; };
 		50533C461C02C4BC00E046D0 /* Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridge.h; sourceTree = "<group>"; };
+		50533C471C02E28300E046D0 /* Riffle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Riffle.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,7 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50533C451C02C4AB00E046D0 /* Riffle.framework in Frameworks */,
+				50533C481C02E28300E046D0 /* Riffle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,7 +44,7 @@
 			children = (
 				50533C311C02C49400E046D0 /* RiffleTesterIos */,
 				50533C301C02C49400E046D0 /* Products */,
-				50533C441C02C4AB00E046D0 /* Riffle.framework */,
+				50533C471C02E28300E046D0 /* Riffle.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -302,6 +302,7 @@
 				50533C431C02C49400E046D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

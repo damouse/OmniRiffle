@@ -15,26 +15,26 @@ let domain = "xs.damouse"
 
 class ViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
-        let ret = GoRiffleEPConnector(url, domain)
-        
-        print(String.fromCString(ret))
-        
-        GoRifflePSubscribe("xs.damouse.go/sub")
-        
-        // Threading implementation
-        let s = Spinner()
-        
-        // Means to let the library do its thing while we listen
-        let thread = NSThread(target: s, selector: "doThings", object: nil)
-        thread.start()
+//        let ret = GoRiffleEPConnector(url, domain)
+//        
+//        print(String.fromCString(ret))
+//        
+//        GoRifflePSubscribe("xs.damouse.go/sub")
+//        
+//        // Threading implementation
+//        let s = Spinner()
+//        
+//        // Means to let the library do its thing while we listen
+//        let thread = NSThread(target: s, selector: "doThings", object: nil)
+//        thread.start()
     }
 }
 
-class Spinner: NSObject {
-    func doThings() {
-        while true {
-            let a = String.fromCString(GoRifflePReceive())
-            print("Message: \(a)")
-        }
-    }
-}
+//class Spinner: NSObject {
+//    func doThings() {
+//        while true {
+//            let a = String.fromCString(GoRifflePReceive())
+//            print("Message: \(a)")
+//        }
+//    }
+//}
