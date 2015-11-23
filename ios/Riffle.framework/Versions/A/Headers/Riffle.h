@@ -24,8 +24,16 @@ FOUNDATION_EXPORT NSString* const GoRiffleErrNoSuchSubscription;
 FOUNDATION_EXPORT NSString* const GoRiffleErrNotAuthorized;
 FOUNDATION_EXPORT NSString* const GoRiffleErrSystemShutdown;
 
+FOUNDATION_EXPORT NSString* GoRiffleConnector(NSString* url, NSString* domain);
+
+FOUNDATION_EXPORT NSString* GoRiffleEPConnector(NSString* url, NSString* domain);
+
+FOUNDATION_EXPORT void GoRiffleListen();
+
 FOUNDATION_EXPORT void GoRiffleLog();
 
-FOUNDATION_EXPORT NSString* GoRiffleTester(NSString* name);
+FOUNDATION_EXPORT NSString* GoRifflePReceive();
+
+FOUNDATION_EXPORT int GoRifflePSubscribe(NSString* s);
 
 #endif
