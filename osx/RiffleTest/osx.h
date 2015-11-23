@@ -52,9 +52,9 @@ extern "C" {
 
 extern char* Connector(char* p0, char* p1);
 
-extern void Subscribe();
+extern int Subscribe(char* p0);
 
-extern char* Recieve();
+extern int Recieve();
 
 #ifdef __cplusplus
 }
