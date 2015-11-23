@@ -54,7 +54,13 @@ extern char* Connector(char* p0, char* p1);
 
 extern int Subscribe(char* p0);
 
-extern int Recieve();
+/* Return type for Recieve */
+struct Recieve_return {
+	int r0;
+	GoSlice r1;
+};
+
+extern struct Recieve_return Recieve();
 
 #ifdef __cplusplus
 }

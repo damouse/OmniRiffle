@@ -35,8 +35,31 @@ class Gopher: NSObject {
     
     func receive() {
         while true {
-            let a = NSNumber(int: Recieve()).integerValue
-            subscriptions[a]!("Hello!")
+            let s = Recieve()
+            //let i = NSNumber(int: s.r0).integerValue
+            
+            // Data
+            let len = NSNumber(longLong:  s.r1.len)
+            let d = NSData(bytes: s.r1.data, length: len.integerValue)
+            
+            let data = try! NSJSONSerialization.JSONObjectWithData(d, options: .AllowFragments)
+            print(data)
+            /*
+            
+            
+            accepted
+            Couldn't be more simple:
+            
+            import Foundation
+            
+            var error: NSError?
+            let jsonData: NSData = /* get your json data */
+            
+            let jsonDict = NSJSONSerialization.JSONObjectWithData(jsonData, options: nil, error: &error) as NSDictionary
+            */
+            
+//            let a = NSNumber(int: Recieve()).integerValue
+//            subscriptions[a]!("Hello!")
         }
     }
 }
