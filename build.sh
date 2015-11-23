@@ -9,7 +9,7 @@ mkdir products
 echo "Building OSX"
 GOOS=darwin GOARCH=amd64 go build -buildmode=c-archive -o products/osx.a riffle/runner/osx.go
 
-rm osx/RiffleTest/osx.h osx/RiffleTest/osx.a
+# rm osx/RiffleTest/osx.h osx/RiffleTest/osx.a
 mv products/osx.h osx/RiffleTest/osx.h 
 mv products/osx.a osx/RiffleTest/osx.a
 
