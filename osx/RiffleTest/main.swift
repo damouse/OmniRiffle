@@ -33,7 +33,7 @@ let domain = "xs.damouse"
 let ret = Connector(url.goString(), domain.goString());
 print(String.fromCString(ret))
 
-
+Subscribe()
 
 // Threading implementation
 let s = Spinner()

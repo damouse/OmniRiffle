@@ -50,9 +50,11 @@ extern "C" {
 #endif
 
 
-extern GoString Tester();
-
 extern char* Connector(char* p0, char* p1);
+
+extern void Subscribe();
+
+extern char* Recieve();
 
 #ifdef __cplusplus
 }
