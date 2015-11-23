@@ -22,20 +22,33 @@ extension String {
     }
 }
 
-func convertJson(key: String? = nil) -> [String: AnyObject] {
-    return [:]
-}
-
 // Interface object for interacting with goRiffle
 class Gopher: NSObject {
-    var subscriptions: [Int64: (AnyObject) -> ()] = [:]
+    var handlers: [Int64: (AnyObject) -> (AnyObject?)] = [:]
 
     
     func subscribe(domain: String, fn: (AnyObject) -> ()) {
         let s = Subscribe(domain.cString())
+        
         let d = NSData(bytes: s.data , length: NSNumber(longLong: s.len).integerValue)
         let data = try! NSJSONSerialization.JSONObjectWithData(d, options: .AllowFragments) as! NSDecimalNumber
-        subscriptions[data.longLongValue] = fn
+        
+        handlers[data.longLongValue] = { (a: AnyObject) -> (AnyObject?) in
+            fn(a)
+            return nil
+        }
+    }
+    
+    func register(domain: String, fn: (AnyObject) -> (AnyObject)) {
+        let s = Register(domain.cString())
+        
+        let d = NSData(bytes: s.data , length: NSNumber(longLong: s.len).integerValue)
+        let data = try! NSJSONSerialization.JSONObjectWithData(d, options: .AllowFragments) as! NSDecimalNumber
+        
+        // small trick to use homogenous handlers
+        handlers[data.longLongValue] = { (a: AnyObject) -> (AnyObject?) in
+            return [fn(a)]
+        }
     }
     
     func receive() {
@@ -44,8 +57,21 @@ class Gopher: NSObject {
             let d = NSData(bytes: s.data , length: NSNumber(longLong: s.len).integerValue)
             let data = try! NSJSONSerialization.JSONObjectWithData(d, options: .AllowFragments) as! [String: AnyObject]
             
-            // How do we check what kind of message this is?
-            subscriptions[Int64(data["id"] as! Double)]!(data["data"]!)
+            // All these need to be dispatched to background
+
+            if let results = handlers[Int64(data["id"] as! Double)]!(data["data"]!) {
+                let json: [String: AnyObject] = [
+                    "id": String(Int64(data["request"] as! Double)),
+                    "ok": "",
+                    "result": results
+                ]
+
+                let out = try! NSJSONSerialization.dataWithJSONObject(json, options: .PrettyPrinted)
+
+                let slice = GoSlice(data: UnsafeMutablePointer<Void>(out.bytes), len: NSNumber(integer: out.length).longLongValue, cap: NSNumber(integer: out.length).longLongValue)
+                Yield(slice)
+
+            }
         }
     }
 }
@@ -55,8 +81,9 @@ let ret = Connector(url.cString(), domain.cString());
 
 
 let g = Gopher()
-g.subscribe("xs.damouse.go/sub") { (obj: AnyObject) -> () in
-    print("Subscription received: \(obj)")
+g.register("xs.damouse.go/sub") { (obj: AnyObject) -> AnyObject in
+    print("Call received: \(obj)")
+    return "Bootle"
 }
 
 // Threading implementation

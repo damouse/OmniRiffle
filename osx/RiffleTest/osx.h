@@ -56,6 +56,10 @@ extern GoSlice Subscribe(char* p0);
 
 extern GoSlice Recieve();
 
+extern void Yield(GoSlice p0);
+
+extern GoSlice Register(char* p0);
+
 #ifdef __cplusplus
 }
 #endif

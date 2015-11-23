@@ -6,8 +6,8 @@ from twisted.internet import reactor
 def main():
     d = yield riffle.FabricSession.start("xs.damouse.python")
 
-    yield d.absPublish(u"xs.damouse.go/sub", 1, 2)
-    print "Publish done"
+    result = yield d.absCall(u"xs.damouse.go/sub", 1, 2)
+    print "Call done: ", result
 
 if __name__ == '__main__':
     riffle.setDevFabric()
