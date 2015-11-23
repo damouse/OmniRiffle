@@ -59,13 +59,7 @@ extern NSString *const SRHTTPResponseErrorKey;
 // It will be nil until after the handshake completes.
 @property (nonatomic, readonly, copy) NSString *protocol;
 
-// Protocols should be an array of strings that turn into Sec-WebSocket-Protocol.
-- (id)initWithURLRequest:(NSURLRequest *)request protocols:(NSArray *)protocols;
-- (id)initWithURLRequest:(NSURLRequest *)request;
-
-// Some helper constructors.
-- (id)initWithURL:(NSURL *)url protocols:(NSArray *)protocols;
-- (id)initWithURL:(NSURL *)url;
+- (id)init;
 
 // Delegate queue will be dispatch_main_queue by default.
 // You cannot set both OperationQueue and dispatch_queue.

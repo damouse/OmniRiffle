@@ -256,6 +256,15 @@ static __strong NSData *CRLFCRLF;
     CRLFCRLF = [[NSData alloc] initWithBytes:"\r\n\r\n" length:4];
 }
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        [self _SR_commonInit];
+    }
+    
+    return self;
+}
+
 - (id)initWithURLRequest:(NSURLRequest *)request protocols:(NSArray *)protocols;
 {
     self = [super init];

@@ -52,6 +52,8 @@ extern "C" {
 
 extern GoString Tester();
 
+extern char* Connector(char* p0, char* p1);
+
 #ifdef __cplusplus
 }
 #endif
