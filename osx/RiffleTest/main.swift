@@ -6,6 +6,15 @@
 //  Copyright © 2015 exis. All rights reserved.
 //
 
+/*
+TODO:
+    Integrate with main swiftRiffle lib for testing
+    Make conditional compilers for ios and osx
+    Cleanup and integrate new changes with goRiffle
+    Implement Domain class in goRiffle
+    Implment Call, Unreg, Unsub
+*/
+
 import Foundation
 
 // Helper methods
@@ -13,6 +22,11 @@ import Foundation
 
 let url = "ws://ec2-52-26-83-61.us-west-2.compute.amazonaws.com:8000/ws"
 let domain = "xs.damouse"
+
+// Example for multiplat (OSX)
+#if os(iOS)
+let color = UIColor.redColor()
+#endif
 
 
 extension String {
@@ -58,7 +72,7 @@ class Gopher: NSObject {
             let data = try! NSJSONSerialization.JSONObjectWithData(d, options: .AllowFragments) as! [String: AnyObject]
             
             // All these need to be dispatched to background
-
+            
             if let results = handlers[Int64(data["id"] as! Double)]!(data["data"]!) {
                 let json: [String: AnyObject] = [
                     "id": String(Int64(data["request"] as! Double)),
@@ -72,6 +86,8 @@ class Gopher: NSObject {
                 Yield(slice)
 
             }
+            
+            // todo: call
         }
     }
 }
