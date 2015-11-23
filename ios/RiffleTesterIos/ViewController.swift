@@ -27,10 +27,6 @@ class ViewController: UIViewController {
         // Means to let the library do its thing while we listen
         let thread = NSThread(target: s, selector: "doThings", object: nil)
         thread.start()
-        
-//        print("Preloop")
-//        NSRunLoop.currentRunLoop().run()
-//        print("Postloop")
     }
 }
 
