@@ -23,11 +23,6 @@ import Foundation
 let url = "ws://ec2-52-26-83-61.us-west-2.compute.amazonaws.com:8000/ws"
 let domain = "xs.damouse"
 
-// Example for multiplat (OSX)
-#if os(iOS)
-let color = UIColor.redColor()
-#endif
-
 
 extension String {
     func cString() -> UnsafeMutablePointer<Int8> {
@@ -42,10 +37,12 @@ class Gopher: NSObject {
 
     
     func subscribe(domain: String, fn: (AnyObject) -> ()) {
-        let s = Subscribe(domain.cString())
         
+        #if os(OSX)
+        let s = Subscribe(domain.cString())
         let d = NSData(bytes: s.data , length: NSNumber(longLong: s.len).integerValue)
         let data = try! NSJSONSerialization.JSONObjectWithData(d, options: .AllowFragments) as! NSDecimalNumber
+        #endif
         
         handlers[data.longLongValue] = { (a: AnyObject) -> (AnyObject?) in
             fn(a)
@@ -54,10 +51,12 @@ class Gopher: NSObject {
     }
     
     func register(domain: String, fn: (AnyObject) -> (AnyObject)) {
-        let s = Register(domain.cString())
         
+        #if os(OSX)
+        let s = Register(domain.cString())
         let d = NSData(bytes: s.data , length: NSNumber(longLong: s.len).integerValue)
         let data = try! NSJSONSerialization.JSONObjectWithData(d, options: .AllowFragments) as! NSDecimalNumber
+        #endif
         
         // small trick to use homogenous handlers
         handlers[data.longLongValue] = { (a: AnyObject) -> (AnyObject?) in
