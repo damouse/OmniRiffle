@@ -1,4 +1,0 @@
-framework module "Reefle" {
-    header "Reefle.h"
-    export *
-}

@@ -13,8 +13,8 @@ set -e
 
 echo "Building iOS"
 gomobile bind -target=ios github.com/exis-io/goriffle
-rm -rf ios/Riffle.framework
-mv Riffle.framework ios/Riffle.framework
+rm -rf ios/Goriffle.framework
+mv Goriffle.framework ios/Goriffle.framework
 
 
 # iOS naively like above. Doesn't work. 
