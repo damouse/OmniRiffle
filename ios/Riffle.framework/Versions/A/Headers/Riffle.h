@@ -8,15 +8,6 @@
 
 #include <Foundation/Foundation.h>
 
-@class GoRiffleMessageBinding;
-
-@interface GoRiffleMessageBinding : NSObject {
-}
-@property(strong, readonly) id _ref;
-
-- (id)initWithRef:(id)ref;
-@end
-
 FOUNDATION_EXPORT NSString* const GoRiffleACTION_SEPARATOR;
 FOUNDATION_EXPORT NSString* const GoRiffleDOMAIN_SEPARATOR;
 FOUNDATION_EXPORT NSString* const GoRiffleErrAuthorizationFailed;
@@ -37,8 +28,12 @@ FOUNDATION_EXPORT void GoRiffleLog();
 
 FOUNDATION_EXPORT NSString* GoRifflePConnector(NSString* url, NSString* domain);
 
-FOUNDATION_EXPORT NSData* GoRifflePReceive();
+FOUNDATION_EXPORT NSData* GoRifflePRecieve();
 
-FOUNDATION_EXPORT int GoRifflePSubscribe(NSString* s);
+FOUNDATION_EXPORT NSData* GoRifflePRegister(NSString* s);
+
+FOUNDATION_EXPORT NSData* GoRifflePSubscribe(NSString* s);
+
+FOUNDATION_EXPORT void GoRifflePYield(NSData* args);
 
 #endif

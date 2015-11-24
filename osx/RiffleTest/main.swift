@@ -97,6 +97,7 @@ let ret = Connector(url.cString(), domain.cString());
 
 
 let g = Gopher()
+
 g.register("xs.damouse.go/sub") { (obj: AnyObject) -> AnyObject in
     print("Call received: \(obj)")
     return "Bootle"

@@ -3,12 +3,12 @@
 set -e
 
 
-echo "Building OSX"
-GOOS=darwin GOARCH=amd64 go build -buildmode=c-archive -o products/osx.a riffle/runner/osx.go
+# echo "Building OSX"
+# GOOS=darwin GOARCH=amd64 go build -buildmode=c-archive -o products/osx.a riffle/runner/osx.go
 
-# rm osx/RiffleTest/osx.h osx/RiffleTest/osx.a
-mv products/osx.h osx/RiffleTest/osx.h 
-mv products/osx.a osx/RiffleTest/osx.a
+# # rm osx/RiffleTest/osx.h osx/RiffleTest/osx.a
+# mv products/osx.h osx/RiffleTest/osx.h 
+# mv products/osx.a osx/RiffleTest/osx.a
 
 
 # echo "Building iOS"
@@ -21,5 +21,5 @@ mv products/osx.a osx/RiffleTest/osx.a
 # GOARM=7 CGO_ENABLED=1 GOARCH=arm go build -buildmode=c-archive -o products/ios.a riffle/runner/osx.go
 
 
-# echo "Building Python"
-# gopy bind -output=products github.com/exis-io/riffle
+echo "Building Python"
+GOOS=darwin GOARCH=amd64 go build -buildmode=c-shared -o python/libriff.so riffle/runner/osx.go
