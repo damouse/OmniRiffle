@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+# set -e
 
 
 # echo "Building OSX"
@@ -11,10 +11,10 @@ set -e
 # mv products/osx.a osx/RiffleTest/osx.a
 
 
-echo "Building iOS"
-gomobile bind -target=ios github.com/exis-io/goriffle
-rm -rf ios/Goriffle.framework
-mv Goriffle.framework ios/Goriffle.framework
+# echo "Building iOS"
+# GOGCCFLAGS="--Wl,-no_pie" gomobile bind -ldflags="-extldflags=-pie" -target=ios -work github.com/exis-io/goriffle
+# rm -rf ios/Goriffle.framework
+# mv Goriffle.framework ios/Goriffle.framework
 
 
 # iOS naively like above. Doesn't work. 
@@ -23,3 +23,11 @@ mv Goriffle.framework ios/Goriffle.framework
 
 # echo "Building Python"
 # GOOS=darwin GOARCH=amd64 go build -buildmode=c-shared -o python/libriff.so goriffle/runner/osx.go
+
+echo "Building js"
+gopherjs build -m goriffle/runner/jsRiffle.go
+
+rm js/jsRiffle.js js/jsRiffle.js.map
+
+mv jsRiffle.js js/jsRiffle.js
+mv jsRiffle.js.map js/jsRiffle.js.map

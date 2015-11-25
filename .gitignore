@@ -27,3 +27,6 @@ xcuserdata
 
 # General
 .DS_Store
+
+js/jsRiffle.js
+js/jsRiffle.js.map
