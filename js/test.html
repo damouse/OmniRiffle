@@ -10,8 +10,17 @@
   <script type="text/javascript" src="jsRiffle.js"></script>
   
   <script type="text/javascript">
-  console.log("hi");
-  console.log(pet.Connector("ws://dev-node.exis.io:8000/ws", "xs.damouse"));
+  // console.log("hi");
+  // console.log(pet.Connector("ws://dev-node.exis.io:8000", "xs.damouse"));
+
+  // And this guy doesn't
+  //console.log(pet.Connector("ws://ec2-52-26-83-61.us-west-2.compute.amazonaws.com:8000/ws", "xs.damouse"));
+
+  // This guy sorta works... I suspect gopher doesnt like port numbers
+  // console.log(pet.Connector("ws://node.exis.io", "xs.demo.damouse"));
+
+  console.log(pet.Connector("ws://localhost:7777", "xs.demo.damouse"));
+
   </script>
 
 <!-- <script type="text/javascript" src="/static/lib/lunr.js/lunr.min.js"></script> -->
